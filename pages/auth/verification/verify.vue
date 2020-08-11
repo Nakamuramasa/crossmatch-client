@@ -18,6 +18,12 @@
                     <div class="alert alert-danger">
                         {{ status }}
                     </div>
+                    <div class="linkToRegister">
+                        <nuxt-link to="/verification/resend">メールの再送信</nuxt-link>
+                    </div>
+                    <div class="linkToRegister">
+                        <nuxt-link to="/login">ログインはこちら</nuxt-link>
+                    </div>
                 </div>
             </form>
         </div>
