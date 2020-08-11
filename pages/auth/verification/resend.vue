@@ -4,13 +4,15 @@
             <div class="userIcon">
                 <i class="fas fa-user fa-3x"></i>
             </div>
-            <h2 class="title">ログイン</h2>
+            <h2 class="title">認証メールの再送信</h2>
 
             <form class="form" @submit.prevent="submit">
                 <alert-error v-if="form.errors.has('message')" :form="form">
                     {{ form.errors.get('message') }}
-                    <nuxt-link to="/verification/resend">Resend verification email</nuxt-link>
                 </alert-error>
+                <alert-success :form="form">
+                    We have resend verification email
+                </alert-success>
                 <div class="form-group">
                     <input
                         type="email"
@@ -23,18 +25,6 @@
                     <has-error :form="form" field="email"></has-error>
                 </div>
 
-                <div class="form-group">
-                    <input
-                        type="password"
-                        v-model.trim="form.password"
-                        name="password"
-                        class="form-control"
-                        :class="{'is-invalid' :form.errors.has('password')}"
-                        placeholder="Password"
-                    />
-                    <has-error :form="form" field="password"></has-error>
-                </div>
-
                 <div class="form-group text-center">
                     <button
                         type="submit"
@@ -44,14 +34,8 @@
                         <span v-if="form.busy">
                             <i class="fas fa-spinner fa-spin"></i>
                         </span>
-                        ログイン
+                        送信
                     </button>
-                </div>
-                <div class="linkToRegister">
-                    <nuxt-link to="/register">アカウント作成はこちら</nuxt-link>
-                </div>
-                <div class="text-center">
-                    <a href="#">パスワードを忘れた</a>
                 </div>
             </form>
 
@@ -64,20 +48,15 @@ export default {
     data(){
         return {
             form: this.$vform({
-                email: '',
-                password: ''
+                email: ''
             })
-        }
+        };
     },
     methods: {
         submit(){
-            this.$auth.loginWith('local', {
-                data: this.form
-            }).then(res => {
-                console.log(res);
-            }).catch(e => {
-                this.form.errors.set(e.response.data.errors);
-            });
+            this.form.post(`/verification/resend`)
+            .then(res => this.form.reset())
+            .catch(e => console.log(e));
         }
     }
 };
