@@ -56,6 +56,12 @@ export default {
   modules: ['bootstrap-vue/nuxt', '@nuxtjs/auth', '@nuxtjs/axios', '@nuxtjs/dotenv'],
 
   auth: {
+      redirect: {
+      login: '/login',
+      logout: '/',
+      callback: false,
+      home: '/',
+    },
     strategies: {
       local: {
         endpoints: {
