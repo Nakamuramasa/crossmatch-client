@@ -36,16 +36,9 @@
                 </div>
 
                 <div class="form-group text-center">
-                    <button
-                        type="submit"
-                        :disabled="form.busy"
-                        class="loginBtn"
-                    >
-                        <span v-if="form.busy">
-                            <i class="fas fa-spinner fa-spin"></i>
-                        </span>
+                    <base-button :loading="form.busy">
                         ログイン
-                    </button>
+                    </base-button>
                 </div>
                 <div class="linkToRegister">
                     <nuxt-link to="/register">アカウント作成はこちら</nuxt-link>

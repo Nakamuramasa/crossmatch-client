@@ -104,16 +104,9 @@
                 </div>
 
                 <div class="text-center">
-                    <button
-                        type="submit"
-                        :disabled="form.busy"
-                        class="btn submitBtn"
-                    >
-                        <span v-if="form.busy">
-                            <i class="fas fa-spinner fa-spin"></i>
-                        </span>
+                    <base-button :loading="form.busy" type="btn submitBtn">
                         はじめる
-                    </button>
+                    </base-button>
                     <div class="linkToLogin">
                         <nuxt-link to="/login">ログインはこちら</nuxt-link>
                     </div>
