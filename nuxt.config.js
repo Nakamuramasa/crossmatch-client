@@ -60,7 +60,7 @@ export default {
       login: '/login',
       logout: '/',
       callback: false,
-      home: '/',
+      home: '/user/dashboard',
     },
     strategies: {
       local: {
