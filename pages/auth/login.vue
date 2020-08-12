@@ -12,27 +12,22 @@
                     <nuxt-link to="/verification/resend">Resend verification email</nuxt-link>
                 </alert-error>
                 <div class="form-group">
-                    <input
-                        type="email"
+                    <base-input
+                        :form="form"
+                        field="email"
                         v-model.trim="form.email"
-                        name="email"
-                        class="form-control"
-                        :class="{'is-invalid' :form.errors.has('email')}"
                         placeholder="Email"
-                    />
-                    <has-error :form="form" field="email"></has-error>
+                    ></base-input>
                 </div>
 
                 <div class="form-group">
-                    <input
-                        type="password"
+                    <base-input
+                        :form="form"
+                        field="password"
+                        inputType="password"
                         v-model.trim="form.password"
-                        name="password"
-                        class="form-control"
-                        :class="{'is-invalid' :form.errors.has('password')}"
                         placeholder="Password"
-                    />
-                    <has-error :form="form" field="password"></has-error>
+                    ></base-input>
                 </div>
 
                 <div class="form-group text-center">

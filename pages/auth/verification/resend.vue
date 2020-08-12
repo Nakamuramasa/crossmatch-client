@@ -14,28 +14,18 @@
                     We have resend verification email
                 </alert-success>
                 <div class="form-group">
-                    <input
-                        type="email"
+                    <base-input
+                        :form="form"
+                        field="email"
                         v-model.trim="form.email"
-                        name="email"
-                        class="form-control"
-                        :class="{'is-invalid' :form.errors.has('email')}"
                         placeholder="Email"
-                    />
-                    <has-error :form="form" field="email"></has-error>
+                    ></base-input>
                 </div>
 
                 <div class="form-group text-center">
-                    <button
-                        type="submit"
-                        :disabled="form.busy"
-                        class="loginBtn"
-                    >
-                        <span v-if="form.busy">
-                            <i class="fas fa-spinner fa-spin"></i>
-                        </span>
+                    <base-button :loading="form.busy">
                         送信
-                    </button>
+                    </base-button>
                 </div>
             </form>
 

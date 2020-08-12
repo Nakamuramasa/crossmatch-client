@@ -12,51 +12,39 @@
                     <p><nuxt-link to="/login">ログイン画面へ</nuxt-link></p>
                 </alert-success>
                 <div class="form-group">
-                    <input
-                        type="email"
-                        name="email"
-                        readonly
+                    <base-input
+                        :form="form"
+                        :readonly="true"
+                        field="email"
                         v-model.trim="form.email"
-                        class="form-control"
-                        :class="{'is-invalid' :form.errors.has('email')}"
                         placeholder="Email"
-                    />
-                    <has-error :form="form" field="email"></has-error>
+                    ></base-input>
                 </div>
 
                 <div class="form-group">
-                    <input
-                        type="password"
-                        name="password"
+                    <base-input
+                        :form="form"
+                        field="password"
+                        inputType="password"
                         v-model.trim="form.password"
-                        class="form-control"
-                        :class="{'is-invalid' :form.errors.has('password')}"
                         placeholder="New Password"
-                    />
-                    <has-error :form="form" field="password"></has-error>
+                    ></base-input>
                 </div>
 
                 <div class="form-group">
-                    <input
-                        type="password"
-                        name="password_confirmation"
+                    <base-input
+                        :form="form"
+                        field="password_confirmation"
+                        inputType="password"
                         v-model.trim="form.password_confirmation"
-                        class="form-control"
                         placeholder="Confirm New Password"
-                    />
+                    ></base-input>
                 </div>
 
                 <div class="form-group text-center">
-                    <button
-                        type="submit"
-                        :disabled="form.busy"
-                        class="loginBtn"
-                    >
-                        <span v-if="form.busy">
-                            <i class="fas fa-spinner fa-spin"></i>
-                        </span>
+                    <base-button :loading="form.busy">
                         パスワードリセット
-                    </button>
+                    </base-button>
                 </div>
             </form>
 
