@@ -5,11 +5,7 @@
         </header>
         <div class='container'>
 
-            <form class="mt-5" @submit.prevent="submit">
-                <alert-success :form="form">
-                    We have sent you an email to activate your accout.
-                </alert-success>
-
+            <form class="mt-5 form" @submit.prevent="submit">
                 <label for="file_photo" class="rounded-circle userProfileImg">
                     <div class="userProfileImg_description">画像をアップロード</div>
                     <i class="fas fa-camera fa-3x"></i>
@@ -25,6 +21,10 @@
                     <img id="thumbnail" class="userImgPreview_content">
                     <p class="userImgPreview_text">画像をアップロード済み</p>
                 </div>
+
+                <alert-success :form="form">
+                    We have sent you an email to activate your account.
+                </alert-success>
 
                 <div class="form-group">
                     <base-input
@@ -97,8 +97,6 @@
                         <label class="form-check-label" for="inlineRadio2">女</label>
                     </div>
                 </div>
-
-                <alert-success :form="form">We have sent you an email to activate your account.</alert-success>
 
                 <div class="text-center">
                     <base-button :loading="form.busy" type="btn submitBtn">
