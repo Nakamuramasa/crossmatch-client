@@ -6,10 +6,19 @@
         <div class='container'>
 
             <form class="mt-5" @submit.prevent="submit">
+                <alert-success :form="form">
+                    We have sent you an email to activate your accout.
+                </alert-success>
+
                 <label for="file_photo" class="rounded-circle userProfileImg">
                     <div class="userProfileImg_description">画像をアップロード</div>
                     <i class="fas fa-camera fa-3x"></i>
-                    <input type="file" id="file_photo" name="user_img"/>
+                    <input
+                        type="file"
+                        v-on:change="fileSelected"
+                        id="file_photo"
+                        name="user_img"
+                    />
                 </label>
 
                 <div class="userImgPreview" id="userImgPreview">
@@ -89,6 +98,8 @@
                     </div>
                 </div>
 
+                <alert-success :form="form">We have sent you an email to activate your account.</alert-success>
+
                 <div class="text-center">
                     <base-button :loading="form.busy" type="btn submitBtn">
                         はじめる
@@ -109,6 +120,7 @@ export default {
     data(){
         return {
             form: this.$vform({
+                user_img: '',
                 username: '',
                 name: '',
                 email: '',
@@ -119,13 +131,24 @@ export default {
         }
     },
     methods: {
+        fileSelected(event){
+            this.form.user_img = event.target.files[0];
+        },
         submit(){
-            this.form.post(`/register`)
-                .then(res => {
-                    this.form.reset();
-                }).catch(error => {
-                    console.log(error);
-                });
+            const formData = new FormData()
+            formData.append('user_img', this.form.user_img)
+            formData.append('username', this.form.username)
+            formData.append('name', this.form.name)
+            formData.append('email', this.form.email)
+            formData.append('password', this.form.password)
+            formData.append('password_confirmation', this.form.password_confirmation)
+            formData.append('sex', this.form.sex)
+            this.$axios.post('/register', formData)
+            .then(res => {
+                this.form.reset();
+            }).catch(error => {
+                console.log(error);
+            });
         }
     }
 };
