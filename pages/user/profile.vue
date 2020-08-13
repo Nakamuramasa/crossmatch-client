@@ -10,7 +10,9 @@
             </header>
             <div class="userInfo">
                 <div class="userInfo_img">
-                    <img :src="user.user_img.thumbnail">
+                    <div v-if="user.user_img">
+                        <img :src="user.user_img.thumbnail">
+                    </div>
                 </div>
                 <div class="userInfo_name">{{user.name}}</div>
                 <div class="userInfo_selfIntroduction">{{user.about}}</div>
