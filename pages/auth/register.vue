@@ -23,14 +23,14 @@
                 </div>
 
                 <alert-success :form="form">
-                    We have sent you an email to activate your account.
+                    アカウント認証用メールを送信しました。
                 </alert-success>
 
                 <div class="form-group">
                     <base-input
                         :form="form"
                         field="name"
-                        v-model.trim="form.name"
+                        v-model="form.name"
                         placeholder="Full Name"
                     ></base-input>
                 </div>

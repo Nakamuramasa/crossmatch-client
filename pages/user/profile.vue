@@ -15,11 +15,12 @@
                     </div>
                 </div>
                 <div class="userInfo_name">{{user.name}}</div>
+                <div class="userInfo_address">{{user.formatted_address}}</div>
                 <div class="userInfo_selfIntroduction">{{user.about}}</div>
             </div>
             <div class="userAction">
                 <div class="userAction_edit userAction_common">
-                    <a href="#"><i class="fas fa-edit fa-2x"></i><span>情報を編集</span></a>
+                    <nuxt-link to="/user/edit"><i class="fas fa-edit fa-2x"></i><span>情報を編集</span></nuxt-link>
                 </div>
                 <div class='userAction_logout userAction_common'>
                     <a href="#" @click.prevent="logout">
