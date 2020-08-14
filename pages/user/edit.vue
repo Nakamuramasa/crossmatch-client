@@ -13,12 +13,12 @@
                         type="file"
                         v-on:change="fileSelected"
                         id="file_photo"
-                        name="img_name"
+                        name="user_img"
                     />
                 </label>
 
                 <div class="userImgPreview" id="userImgPreview">
-                    <img id="thumbnail" class="userImgPreview_content" accept="image/*" src="">
+                    <img id="thumbnail" class="userImgPreview_content">
                     <p class="userImgPreview_text">画像をアップロード済み</p>
                 </div>
 
@@ -36,14 +36,17 @@
                 </div>
 
                 <div class="form-group">
-                    Location
+                    <base-gmap
+                        :initialValue="form.formatted_address"
+                        @address-response="handleAddress"
+                    ></base-gmap>
                 </div>
 
                 <div class="form-group">
                     <base-textarea
                         :form="form"
                         field="about"
-                        rows="4"
+                        :rows=4
                         v-model="form.about"
                         placeholder="Please enter enter some information about yourself"
                     ></base-textarea>
@@ -53,6 +56,9 @@
                     <base-button :loading="form.busy" type="btn submitBtn">
                         変更する
                     </base-button>
+                    <div class="linkToLogin">
+                        <nuxt-link to="/user/profile">もどる</nuxt-link>
+                    </div>
                 </div>
             </form>
         </div>
@@ -70,9 +76,8 @@ export default {
                 about: '',
                 formatted_address: '',
                 location: {},
-                sex: ''
             })
-        }
+        };
     },
     mounted(){
         Object.keys(this.form).forEach(k => {
@@ -88,7 +93,12 @@ export default {
     },
     methods: {
         fileSelected(event){
-            this.form.user_img = event.target.files[0];
+            this.user_img = event.target.files[0];
+        },
+        handleAddress(data){
+            this.form.formatted_address = data.formatted_address;
+            this.form.location.latitude = data.latitude;
+            this.form.location.longitude = data.longitude;
         },
         update(){},
     }
