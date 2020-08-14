@@ -19,7 +19,6 @@
 
                 <div class="userImgPreview" id="userImgPreview">
                     <img id="thumbnail" class="userImgPreview_content">
-                    <p class="userImgPreview_text">画像をアップロード済み</p>
                 </div>
 
                 <alert-success :form="form">
