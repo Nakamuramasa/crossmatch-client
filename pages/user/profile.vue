@@ -20,13 +20,13 @@
             </div>
             <div class="userAction">
                 <div class="userAction_edit userAction_common">
-                    <nuxt-link to="/user/edit"><i class="fas fa-edit fa-2x"></i><span>情報を編集</span></nuxt-link>
+                    <nuxt-link to="/user/edit"><i class="fas fa-edit"></i><span>情報を編集</span></nuxt-link>
                 </div>
                 <div class='userAction_logout userAction_common'>
-                    <a href="#" @click.prevent="logout">
-                        <i class="fas fa-cog fa-2x"></i>
-                        <span>ログアウト</span>
-                    </a>
+                    <a href="#"><span>パスワード変更</span></a>
+                </div>
+                <div class='userAction_logout userAction_common'>
+                    <a href="#" @click.prevent="logout"><i class="fas fa-cog"></i><span>ログアウト</span></a>
                 </div>
             </div>
         </div>

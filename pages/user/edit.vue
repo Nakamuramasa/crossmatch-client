@@ -86,11 +86,6 @@ export default {
             }
         });
 
-        // this.form.location = {
-        //     longitude: this.$auth.user.location.coordinates[0],
-        //     latitude: this.$auth.user.location.coordinates[1]
-        // }
-
         this.form.location_longitude = this.$auth.user.location.coordinates[0];
         this.form.location_latitude = this.$auth.user.location.coordinates[1];
     },
@@ -113,7 +108,9 @@ export default {
             formData.set('location_latitude', this.form.location_latitude)
             this.$axios.post('/settings/profile', formData)
             .then(res => {
-                this.form.reset();
+                setTimeout(() => {
+                    this.$router.push({ name: 'user.profile' });
+                }, 1000);
             }).catch(error => {
                 console.log(error);
             });
