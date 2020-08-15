@@ -11,7 +11,7 @@
                     <i class="fas fa-camera fa-3x"></i>
                     <input
                         type="file"
-                        v-on:change="fileSelected"
+                        @change="fileSelected"
                         id="file_photo"
                         name="user_img"
                     />

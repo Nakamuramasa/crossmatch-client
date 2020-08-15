@@ -11,7 +11,7 @@
                     <i class="fas fa-camera fa-3x"></i>
                     <input
                         type="file"
-                        v-on:change="fileSelected"
+                        @change="fileSelected"
                         id="file_photo"
                         name="user_img"
                     />
@@ -74,7 +74,8 @@ export default {
                 name: '',
                 about: '',
                 formatted_address: '',
-                location: {},
+                location_longitude: '',
+                location_latitude: ''
             })
         };
     },
@@ -85,10 +86,13 @@ export default {
             }
         });
 
-        this.form.location = {
-            longitude: this.$auth.user.location.coordinates[0],
-            latitude: this.$auth.user.location.coordinates[1]
-        }
+        // this.form.location = {
+        //     longitude: this.$auth.user.location.coordinates[0],
+        //     latitude: this.$auth.user.location.coordinates[1]
+        // }
+
+        this.form.location_longitude = this.$auth.user.location.coordinates[0];
+        this.form.location_latitude = this.$auth.user.location.coordinates[1];
     },
     methods: {
         fileSelected(event){
@@ -96,10 +100,24 @@ export default {
         },
         handleAddress(data){
             this.form.formatted_address = data.formatted_address;
-            this.form.location.latitude = data.latitude;
-            this.form.location.longitude = data.longitude;
+            this.form.location_longitude = data.longitude;
+            this.form.location_latitude = data.latitude;
         },
-        update(){},
+        update(){
+            const formData = new FormData()
+            formData.append('name', this.form.name)
+            formData.append('user_img', this.user_img)
+            formData.append('about', this.form.about)
+            formData.append('formatted_address', this.form.formatted_address)
+            formData.set('location_longitude', this.form.location_longitude)
+            formData.set('location_latitude', this.form.location_latitude)
+            this.$axios.post('/settings/profile', formData)
+            .then(res => {
+                this.form.reset();
+            }).catch(error => {
+                console.log(error);
+            });
+        },
     }
 };
 </script>
