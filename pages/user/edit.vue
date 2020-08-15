@@ -110,10 +110,8 @@ export default {
             .then(res => {
                 setTimeout(() => {
                     this.$router.push({ name: 'user.profile' });
-                }, 1000);
-            }).catch(error => {
-                console.log(error);
-            });
+                }, 2000);
+            }).catch(e => console.log(e));
         },
     }
 };

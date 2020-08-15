@@ -14,6 +14,7 @@ const routes = [
     { path: '/password/reset/:token', name: 'password.reset', component: page('auth/password/password-reset.vue') },
     { path: '/user/profile', name: 'user.profile', component: page('user/profile.vue') },
     { path: '/user/edit', name: 'user.edit', component: page('user/edit.vue') },
+    { path: '/user/password', name: 'user.password', component: page('user/password.vue') },
 ];
 
 export function createRouter(){
