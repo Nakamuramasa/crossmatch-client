@@ -3,9 +3,9 @@
         <div class="container">
             <header class="header">
                 <p class="header_logo">
-                    <a href="#">
+                    <nuxt-link to="/user/reaction">
                         <img src="~assets/images/laravel-match-icon.png">
-                    </a>
+                    </nuxt-link>
                 </p>
             </header>
             <div class="userInfo">

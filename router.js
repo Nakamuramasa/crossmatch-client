@@ -15,6 +15,8 @@ const routes = [
     { path: '/user/profile', name: 'user.profile', component: page('user/profile.vue') },
     { path: '/user/edit', name: 'user.edit', component: page('user/edit.vue') },
     { path: '/user/password', name: 'user.password', component: page('user/password.vue') },
+    { path: '/user/match', name: 'user.match', component: page('user/match.vue') },
+    { path: '/user/reaction', name: 'user.reaction', component: page('user/reaction.vue') },
 ];
 
 export function createRouter(){
