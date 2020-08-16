@@ -7,7 +7,7 @@
                     ERROR {{ error.statusCode }}
                 </h1>
                 <p>{{ error.message }}</p>
-                <p class="font-14 fw-400 text-center mt-4">
+                <p class="linkToTop font-14 fw-400 text-center mt-4">
                     <nuxt-link to="/">Top page</nuxt-link>
                 </p>
             </div>
@@ -20,3 +20,7 @@ export default {
     props: ['error']
 };
 </script>
+
+<style lang="scss" scoped>
+@import "~assets/scss/_custom/_error.scss";
+</style>
