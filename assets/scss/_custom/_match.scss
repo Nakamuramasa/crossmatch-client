@@ -48,22 +48,20 @@
         }
       }
       &_name {
-
+        color:#fd5068;
       }
-      form {
+      .chatForm {
         position: absolute;
         right: 0;
-        .chatForm_btn {
-          border: none;
-          padding: 10px;
-          background: #fd5068;
-          color: #fff;
-          border-radius: 6px;
-          cursor: pointer;
-          transition: opacity .3s;
-          &:hover {
-            opacity: .7;
-          }
+        border: none;
+        padding: 10px;
+        background: #fd5068;
+        color: #fff;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: opacity .3s;
+        &:hover {
+          opacity: .7;
         }
       }
     }

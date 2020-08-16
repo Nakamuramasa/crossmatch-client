@@ -8,18 +8,17 @@
             <div class="mt-5">
                 <div class="matchingNum">{{users.length}}人とマッチングしています</div>
                 <h2 class="pageTitle">マッチングした人一覧</h2>
+
                 <div class="matchingList">
-
-                    <div class="matchingPerson" v-for="user in users" :key="user.id">
+                    <div class="matchingPerson" v-for="user in users" :key="user.id" :value="user.id">
                         <div class="matchingPerson_img"><img :src="user.user_img.thumbnail"></div>
-                        <div class="matchingPerson_name">{{user.name}}</div>
-
-                        <form method="POST"">
-                            <input name="user_id" type="hidden">
-                            <button type="submit" class="chatForm_btn">チャットを開く</button>
-                        </form>
+                        <nuxt-link :to="{ name: 'user.detail', params: { id: user.id } }">
+                            <div class="matchingPerson_name">{{user.name}}</div>
+                        </nuxt-link>
+                        <nuxt-link to="/chat" class="chatForm">チャットを開く</nuxt-link>
                     </div>
                 </div>
+
             </div>
         </div>
     </div>
@@ -30,7 +29,10 @@ export default {
     middleware: ['auth'],
     data(){
         return {
-            users: []
+            users: [],
+            form: this.$vform({
+                recipient: ''
+            })
         };
     },
     created(){
@@ -40,7 +42,8 @@ export default {
         async matchUser(){
             const { data } = await this.$axios.$get("/matching");
             this.users = data;
-        }
+        },
+        submit(){}
     }
 };
 </script>
