@@ -10,13 +10,11 @@
                 <h2 class="pageTitle">マッチングした人一覧</h2>
 
                 <div class="matchingList">
-                    <div class="matchingPerson" v-for="user in users" :key="user.id" :value="user.id">
-                        <div class="matchingPerson_img"><img :src="user.user_img.thumbnail"></div>
-                        <nuxt-link :to="{ name: 'user.detail', params: { id: user.id } }">
-                            <div class="matchingPerson_name">{{user.name}}</div>
-                        </nuxt-link>
-                        <nuxt-link to="/chat" class="chatForm">チャットを開く</nuxt-link>
-                    </div>
+                    <MatchUser
+                        v-for="user in users"
+                        :key="user.id"
+                        :user="user"
+                    ></MatchUser>
                 </div>
 
             </div>
@@ -25,8 +23,10 @@
 </template>
 
 <script>
+import MatchUser from '@/components/MatchUser';
 export default {
     middleware: ['auth'],
+    components: {MatchUser},
     data(){
         return {
             users: [],

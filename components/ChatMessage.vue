@@ -24,7 +24,7 @@ export default {
                 .catch(e => console.log(e));
         }
     }
-}
+};
 </script>
 
 <style lang="scss" scoped>
