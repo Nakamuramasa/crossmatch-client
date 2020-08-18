@@ -4,7 +4,9 @@
         <nuxt-link :to="{ name: 'user.detail', params: { id: user.id } }">
             <div class="matchingPerson_name">{{user.name}}</div>
         </nuxt-link>
-        <nuxt-link to="/chat" class="chatForm">チャットを開く</nuxt-link>
+        <form @submit.prevent="submit">
+            <button class="chatForm">チャットを開く</button>
+        </form>
     </div>
 </template>
 
@@ -14,6 +16,20 @@ export default {
         user: {
             type: Object,
             required: true
+        }
+    },
+    data(){
+        return {
+            form: this.$vform({})
+        }
+    },
+    methods: {
+        submit(){
+            this.$router
+            .push({ name: "chat" , params: { recipient : this.user.id }})
+            .catch(error => {
+                console.log(error);
+            });
         }
     }
 };

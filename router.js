@@ -18,7 +18,7 @@ const routes = [
     { path: '/user/password', name: 'user.password', component: page('user/password.vue') },
     { path: '/user/match', name: 'user.match', component: page('user/match.vue') },
     { path: '/user/reaction', name: 'user.reaction', component: page('user/reaction.vue') },
-    { path: '/chat', name: 'chat', component: page('chat/chat.vue') },
+    { path: '/chat', name: 'chat', component: page('chat/chat.vue'), props: true },
 ];
 
 export function createRouter(){
